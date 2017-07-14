@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Page 1</title>
+    <link rel="stylesheet" media="screen" href="styles.css" >
+</head>
+<body>
+<h1>Тестовое задание. Страница первая.</h1>
+<form class="form-local">
+    <ul>
+        <li>
+            <label for="surname">Фамилия:</label>
+            <input type="text" placeholder="Введите Вашу фамилию" name="surname" required />
+        </li>
+        <li>
+            <label for="name">Имя:</label>
+            <input type="text" placeholder="Введите Ваше имя" name="name" required />
+        </li>
+        <li>
+            <label for="mName">Отчество:</label>
+            <input type="text" placeholder="Введите Ваше отчество" name="mName" required />
+        </li>
+        <li>
+            <label for="age">Возраст:</label>
+            <input type="number" placeholder="Введите Ваш возраст" min=18 max=50 step=1 name="age" required />
+        </li>
+        <li>
+            <button class="but" type="submit" formmethod="post" formaction="">Отправить</button>
+            <button class="but" type="reset">Отмена</button>
+        </li>
+    </ul>
+</form>
+</body>
+</html>
