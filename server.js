@@ -37,10 +37,9 @@ webSocketServer.on('connection', function(ws) {
 var fileServer = new Static.Server('.');
 http.createServer(function (req, res) {
     if (req.url == '/sendAjax') {
-
-        var data = '';
         req.on('data', function(chunk) {
-            data += chunk.toString();
+            var data = chunk.toString();
+            console.log('Ajax с сервера отправляет: ' + data);
             res.end(data);
         });
 

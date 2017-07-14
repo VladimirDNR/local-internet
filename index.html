@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Тестовое задание. Страница первая.</h1>
-<form class="form_local" action="Javascript:sendAjax();" method="post" name="form_local">
+<form class="form_local" action="Javascript:sendForm();" method="post" name="form_local">
     <ul>
         <li>
             <label for="surname">Фамилия:</label>
@@ -24,6 +24,14 @@
         <li>
             <label for="age">Возраст:</label>
             <input type="number" placeholder="Введите Ваш возраст" min=18 max=50 step=1 name="age" required />
+        </li>
+        <li>
+            <label for="transport">Ajax:</label>
+            <input type="radio" name="transport" id="Ajax" value="Ajax">
+        </li>
+        <li>
+            <label for="transport">Websocket:</label>
+            <input type="radio" name="transport" id="Websocket" value="Websocket">
         </li>
         <li>
             <button class="but" type="submit">Сохранить</button>
