@@ -32,14 +32,14 @@ function sendAjax(){
         mesAjax += 'Имя: ' + res.name + '.<br>';
         mesAjax += 'Отчество: ' + res.mName + '.<br>';
         mesAjax += 'Возраст: ' + res.age + '.<br>';
-        document.getElementById('resAjax').innerHTML = mesAjax;
+        document.getElementById('res').innerHTML = mesAjax;
     };
 
     xhr.send(JSON.stringify(outgoingMessage));
 }
 
 if (!window.WebSocket) {
-    document.getElementById('resWebsocket').innerHTML = 'WebSocket в этом браузере не поддерживается.';
+    document.getElementById('res').innerHTML = 'WebSocket в этом браузере не поддерживается.';
 }
 
 var socket = new WebSocket("ws://localhost:8081");
@@ -56,7 +56,7 @@ function showMessage(message) {
     mesWebsocket += 'Имя: ' + res.name + '.<br>';
     mesWebsocket += 'Отчество: ' + res.mName + '.<br>';
     mesWebsocket += 'Возраст: ' + res.age + '.<br>';
-    document.getElementById('resWebsocket').innerHTML = mesWebsocket
+    document.getElementById('res').innerHTML = mesWebsocket
 }
 
 function sendWebsocket() {
@@ -71,5 +71,5 @@ function sendWebsocket() {
 }
 
 socket.onerror = function(error) {
-    document.getElementById('resWebsocket').innerHTML = "Произошла ошибка: " + error.data;
+    document.getElementById('res').innerHTML = "Произошла ошибка: " + error.data;
 };
