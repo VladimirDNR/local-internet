@@ -49,15 +49,22 @@ webSocketServer.on('connection', function(ws) {
 // обычный сервер (статика) на порту 8080
 var fileServer = new Static.Server('.');
 http.createServer(function (req, res) {
+
+    if (req.url == '/getStart') {
+        req.on('data', function(chunk) {
+            res.end(JSON.stringify(infoClient));
+        });
+
+    }
+
     if (req.url == '/sendAjax') {
         req.on('data', function(chunk) {
             var ajaxMessage = chunk.toString();
             infoClient = JSON.parse(ajaxMessage);
-            console.log('Ajax с сервера отправляет: ' + ajaxMessage);
             res.end(ajaxMessage);
         });
-
     }
+
     if (req.url == '/getAge') {
 
         req.on('data', function(chunk) {

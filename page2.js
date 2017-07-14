@@ -1,7 +1,9 @@
+getStart();
+
 if (!window.WebSocket) {
+
     document.getElementById('info').innerHTML = 'WebSocket в этом браузере не поддерживается.';
 }
-
 var socket = new WebSocket("ws://localhost:8081");
 
 socket.onmessage = function(event) {
@@ -11,8 +13,7 @@ socket.onmessage = function(event) {
 
 function showMessage(message) {
     var res = JSON.parse(message);
-    var mesWebsocket = 'Ответ приехал по Websocket:<br>';
-    mesWebsocket += 'Фамилия: ' + res.surname + '.<br>';
+    var mesWebsocket = 'Фамилия: ' + res.surname + '.<br>';
     mesWebsocket += 'Имя: ' + res.name + '.<br>';
     mesWebsocket += 'Отчество: ' + res.mName + '.<br>';
     document.getElementById('info').innerHTML = mesWebsocket
@@ -27,6 +28,30 @@ socket.onclose = function(event) {
 
     document.getElementById("info").innerHTML = "Error: " + event;
 };
+
+function getStart() {
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "/getStart");
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState != 4) return;
+
+        if (xhr.status != 200) {
+            alert('Ошибка ' + xhr.status + ': ' + xhr.statusText);
+            return;
+        }
+
+        var res = JSON.parse(xhr.responseText);
+        var mesAjax = 'Фамилия: ' + res.surname + '.<br>';
+        mesAjax += 'Имя: ' + res.name + '.<br>';
+        mesAjax += 'Отчество: ' + res.mName + '.<br>';
+        document.getElementById('info').innerHTML = mesAjax;
+    };
+
+    xhr.send(' ');
+}
 
 
 function ageSurvey() {

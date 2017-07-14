@@ -27,8 +27,7 @@ function sendAjax(){
         }
 
         var res = JSON.parse(xhr.responseText);
-        var mesAjax = 'Ответ приехал по Ajax:<br>';
-        mesAjax += 'Фамилия: ' + res.surname + '.<br>';
+        var mesAjax = 'Фамилия: ' + res.surname + '.<br>';
         mesAjax += 'Имя: ' + res.name + '.<br>';
         mesAjax += 'Отчество: ' + res.mName + '.<br>';
         mesAjax += 'Возраст: ' + res.age + '.<br>';
@@ -51,8 +50,7 @@ socket.onmessage = function(event) {
 
 function showMessage(message) {
     var res = JSON.parse(message);
-    var mesWebsocket = 'Ответ приехал по Websocket:<br>';
-    mesWebsocket += 'Фамилия: ' + res.surname + '.<br>';
+    var mesWebsocket = 'Фамилия: ' + res.surname + '.<br>';
     mesWebsocket += 'Имя: ' + res.name + '.<br>';
     mesWebsocket += 'Отчество: ' + res.mName + '.<br>';
     mesWebsocket += 'Возраст: ' + res.age + '.<br>';
