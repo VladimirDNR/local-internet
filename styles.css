@@ -18,7 +18,7 @@ h1 {
 }
 
 body {
-    font: 14px/21px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    font: 14px/21px Georgia, Times, "Times New Roman", serif;
     margin-left:auto;
     margin-right:auto;
     width:600px;
@@ -105,9 +105,11 @@ button.but {
     -o-box-shadow: 0 1px 0 0 #fb698a inset;
     color: white;
     font-weight: bold;
+    font-family: Georgia, Times, "Times New Roman", serif;
     padding: 6px 20px;
     text-align: center;
     text-shadow: 0 -1px 0 #9a383a;
+    box-shadow: inset 0 -60px 0 #ee6073, 2px 2px 3px #9a383a;
 }
 button.but:hover {
     opacity:.85;
@@ -120,4 +122,23 @@ button.but:active {
     -moz-box-shadow: 0 0 10px 5px #9a383a inset;
     -ms-box-shadow: 0 0 10px 5px #9a383a inset;
     -o-box-shadow: 0 0 10px 5px #9a383a inset;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    /*letter-spacing: 1px;*/
+    margin: 5px 5px;
+    padding: 6px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    color: #ee6073;
+    box-shadow: inset 0 -60px 0 #ee6073, 2px 2px 3px #9a383a;
+    color: white;
+}
+a:hover {
+    opacity:.85;
+    cursor: pointer;
 }

@@ -25,7 +25,6 @@ socket.onerror = function(error) {
 
 socket.onclose = function(event) {
     console.log("Error occurred.");
-
     document.getElementById("info").innerHTML = "Error: " + event;
 };
 

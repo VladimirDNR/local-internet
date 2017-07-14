@@ -2,12 +2,10 @@ var http = require('http');
 var Static = require('node-static');
 var WebSocketServer = new require('ws');
 
-// подключенные клиенты
 var clients = {};
 var infoClient = {};
 var infoC = {};
 
-// WebSocket-сервер на порту 8081
 var webSocketServer = new WebSocketServer.Server({port: 8081});
 webSocketServer.on('connection', function(ws) {
 
@@ -20,7 +18,6 @@ webSocketServer.on('connection', function(ws) {
         infoClient = JSON.parse(message);
 
         sendInfo();
-
     });
 
     setInterval(checkInfo, 2000);
@@ -46,7 +43,6 @@ webSocketServer.on('connection', function(ws) {
 });
 
 
-// обычный сервер (статика) на порту 8080
 var fileServer = new Static.Server('.');
 http.createServer(function (req, res) {
 
@@ -54,7 +50,6 @@ http.createServer(function (req, res) {
         req.on('data', function(chunk) {
             res.end(JSON.stringify(infoClient));
         });
-
     }
 
     if (req.url == '/sendAjax') {
@@ -70,7 +65,6 @@ http.createServer(function (req, res) {
         req.on('data', function(chunk) {
             res.end(infoClient.age);
         });
-
     }
     fileServer.serve(req, res);
 
