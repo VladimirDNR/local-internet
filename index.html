@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Тестовое задание. Страница первая.</h1>
-<form class="form_local" name="form_local">
+<form class="form_local" action="Javascript:sendAjax();" method="post" name="form_local">
     <ul>
         <li>
             <label for="surname">Фамилия:</label>
@@ -26,7 +26,7 @@
             <input type="number" placeholder="Введите Ваш возраст" min=18 max=50 step=1 name="age" required />
         </li>
         <li>
-            <button class="but" type="submit" formmethod="post" formaction="">Сохранить</button>
+            <button class="but" type="submit">Сохранить</button>
             <button class="but" type="reset">Отмена</button>
         </li>
     </ul>

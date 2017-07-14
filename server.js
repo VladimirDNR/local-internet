@@ -14,7 +14,6 @@ webSocketServer.on('connection', function(ws) {
     console.log("новое соединение " + id);
 
     ws.on('message', function(message) {
-        console.log('получено сообщение ' + message);
         var res = JSON.parse(message);
         console.log('В полученом сообщении фамилия: ' + res.surname);
         console.log('В полученом сообщении имя: ' + res.name);
@@ -37,9 +36,18 @@ webSocketServer.on('connection', function(ws) {
 // обычный сервер (статика) на порту 8080
 var fileServer = new Static.Server('.');
 http.createServer(function (req, res) {
+    if (req.url == '/sendAjax') {
 
+        var data = '';
+        req.on('data', function(chunk) {
+            data += chunk.toString();
+            res.end(data);
+        });
+
+    }
     fileServer.serve(req, res);
 
 }).listen(8080);
 
 console.log("Сервер запущен на портах 8080, 8081");
+
