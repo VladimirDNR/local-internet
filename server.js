@@ -4,7 +4,7 @@ var WebSocketServer = new require('ws');
 
 var clients = {};
 var infoClient = {};
-var infoC = {};
+var infoC = infoClient;
 
 var webSocketServer = new WebSocketServer.Server({port: 8081});
 webSocketServer.on('connection', function(ws) {
