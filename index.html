@@ -7,26 +7,26 @@
 </head>
 <body>
 <h1>Тестовое задание. Страница первая.</h1>
-<form class="form-local">
+<form class="form_local" name="form_local">
     <ul>
         <li>
             <label for="surname">Фамилия:</label>
-            <input type="text" placeholder="Введите Вашу фамилию" name="surname" required />
+            <input type="text" maxlength="15" placeholder="Введите Вашу фамилию" name="surname" required />
         </li>
         <li>
             <label for="name">Имя:</label>
-            <input type="text" placeholder="Введите Ваше имя" name="name" required />
+            <input type="text" maxlength="15" placeholder="Введите Ваше имя" name="name" required />
         </li>
         <li>
             <label for="mName">Отчество:</label>
-            <input type="text" placeholder="Введите Ваше отчество" name="mName" required />
+            <input type="text" maxlength="15" placeholder="Введите Ваше отчество" name="mName" required />
         </li>
         <li>
             <label for="age">Возраст:</label>
             <input type="number" placeholder="Введите Ваш возраст" min=18 max=50 step=1 name="age" required />
         </li>
         <li>
-            <button class="but" type="submit" formmethod="post" formaction="">Отправить</button>
+            <button class="but" type="submit" formmethod="post" formaction="">Сохранить</button>
             <button class="but" type="reset">Отмена</button>
         </li>
     </ul>
