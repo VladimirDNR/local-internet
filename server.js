@@ -4,6 +4,7 @@ var WebSocketServer = new require('ws');
 
 // подключенные клиенты
 var clients = {};
+var ajaxMessage = '';
 
 // WebSocket-сервер на порту 8081
 var webSocketServer = new WebSocketServer.Server({port: 8081});
@@ -38,9 +39,9 @@ var fileServer = new Static.Server('.');
 http.createServer(function (req, res) {
     if (req.url == '/sendAjax') {
         req.on('data', function(chunk) {
-            var data = chunk.toString();
-            console.log('Ajax с сервера отправляет: ' + data);
-            res.end(data);
+            ajaxMessage = chunk.toString();
+            console.log('Ajax с сервера отправляет: ' + ajaxMessage);
+            res.end(ajaxMessage);
         });
 
     }
@@ -49,4 +50,3 @@ http.createServer(function (req, res) {
 }).listen(8080);
 
 console.log("Сервер запущен на портах 8080, 8081");
-

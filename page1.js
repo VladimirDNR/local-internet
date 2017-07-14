@@ -69,3 +69,7 @@ function sendWebsocket() {
     };
     socket.send(JSON.stringify(outgoingMessage));
 }
+
+socket.onerror = function(error) {
+    document.getElementById('resWebsocket').innerHTML = "Произошла ошибка: " + error.data;
+};
