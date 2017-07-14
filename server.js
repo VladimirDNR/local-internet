@@ -4,7 +4,8 @@ var WebSocketServer = new require('ws');
 
 // подключенные клиенты
 var clients = {};
-var age = '';
+var infoClient = {};
+var infoC = {};
 
 // WebSocket-сервер на порту 8081
 var webSocketServer = new WebSocketServer.Server({port: 8081});
@@ -15,17 +16,27 @@ webSocketServer.on('connection', function(ws) {
     console.log("новое соединение " + id);
 
     ws.on('message', function(message) {
-        var res = JSON.parse(message);
-        console.log('В полученом сообщении фамилия: ' + res.surname);
-        console.log('В полученом сообщении имя: ' + res.name);
-        console.log('В полученом сообщении отчество: ' + res.mName);
-        console.log('В полученом сообщении возраст: ' + res.age);
-        age = res.age;
 
-        for(var key in clients) {
-            clients[key].send(JSON.stringify(res));
-        }
+        infoClient = JSON.parse(message);
+
+        sendInfo();
+
     });
+
+    setInterval(checkInfo, 2000);
+
+    function sendInfo() {
+        for(var key in clients) {
+            clients[key].send(JSON.stringify(infoClient));
+        }
+    }
+
+    function checkInfo() {
+        if (infoClient != infoC){
+            infoC = infoClient;
+            sendInfo()
+        }
+    }
 
     ws.on('close', function() {
         console.log('соединение закрыто ' + id);
@@ -41,7 +52,7 @@ http.createServer(function (req, res) {
     if (req.url == '/sendAjax') {
         req.on('data', function(chunk) {
             var ajaxMessage = chunk.toString();
-            age = JSON.parse(ajaxMessage).age;
+            infoClient = JSON.parse(ajaxMessage);
             console.log('Ajax с сервера отправляет: ' + ajaxMessage);
             res.end(ajaxMessage);
         });
@@ -50,9 +61,7 @@ http.createServer(function (req, res) {
     if (req.url == '/getAge') {
 
         req.on('data', function(chunk) {
-            // ajaxMessage = chunk.toString();
-            console.log('Ajax с сервера отправляет: ' + age);
-            res.end(age);
+            res.end(infoClient.age);
         });
 
     }

@@ -15,12 +15,17 @@ function showMessage(message) {
     mesWebsocket += 'Фамилия: ' + res.surname + '.<br>';
     mesWebsocket += 'Имя: ' + res.name + '.<br>';
     mesWebsocket += 'Отчество: ' + res.mName + '.<br>';
-    mesWebsocket += 'Возраст: ' + res.age + '.<br>';
     document.getElementById('info').innerHTML = mesWebsocket
 }
 
 socket.onerror = function(error) {
     document.getElementById('info').innerHTML = "Произошла ошибка: " + error.data;
+};
+
+socket.onclose = function(event) {
+    console.log("Error occurred.");
+
+    document.getElementById("info").innerHTML = "Error: " + event;
 };
 
 
